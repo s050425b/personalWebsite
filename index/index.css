@@ -1,0 +1,42 @@
+:root {
+    --footballX: 50px;
+    --footballY: 0px;
+}
+
+#footballImg {
+    width: 35px;
+    display:block;
+    border: 1px red solid;
+    margin: 100px auto;
+    cursor: pointer;
+}
+
+.footballAnimation {
+    animation: 0.5s football linear;
+}
+
+#footballGateImg {
+    width: 300px;
+    display: block;
+    border: 1px blue solid;
+    margin: 0 auto;
+}
+
+#footballDiv {
+    height:300px;
+    width: 400px;
+    border: 1px green solid;
+}
+
+@keyframes football {
+    30% {
+        transform: translate(var(--footballX), var(--footballY)) rotate(1turn);
+    }
+    70%{
+        transform: translate(calc(var(--footballX) * 2), calc(var(--footballY) * 2)) rotate(2turn);
+    }
+
+    100%{
+        transform: translate(calc(var(--footballX) * 2), calc(var(--footballY) * 2)) rotate(2.2turn);
+    }
+}
