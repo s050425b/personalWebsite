@@ -11,6 +11,7 @@
     cursor: pointer;
 }
 
+
 .footballAnimation {
     animation: 0.5s football linear;
 }
@@ -28,15 +29,16 @@
     border: 1px green solid;
 }
 
+
 @keyframes football {
-    30% {
+    20% {
         transform: translate(var(--footballX), var(--footballY)) rotate(1turn);
     }
-    70%{
-        transform: translate(calc(var(--footballX) * 2), calc(var(--footballY) * 2)) rotate(2turn);
+    70% {
+        transform: translate(calc(var(--footballX) * 2), calc(var(--footballY) * 2)) rotate(2turn) scale(0.75, 0.75);
     }
 
-    100%{
-        transform: translate(calc(var(--footballX) * 2), calc(var(--footballY) * 2)) rotate(2.2turn);
+    100% {
+        transform: translate(calc(var(--footballX) * 2), calc(var(--footballY) * 2)) rotate(2.2turn) scale(0.7, 0.7);
     }
 }

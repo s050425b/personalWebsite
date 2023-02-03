@@ -2,14 +2,47 @@
 <html>
     <head>
         <title>Welcome to my personal Website</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./reset.css">
         <link rel="stylesheet" href="./football.css">
+        <link rel="stylesheet" href="./header.css">
+        <link rel="stylesheet" href="./body.css">
         <script src="./index.js" defer></script>
     </head>
 
     <body>
-        <div id="footballDiv">
-            <img id="footballGateImg" src="../resource/oie_1bOxdlDbnrx3.png">
-            <img id="footballImg" src="../resource/oie_0e9KJgTSABQD.png">
-        </div>
+        <header>
+            <nav>
+                <p>a</p>
+                <ul id="navList" class="center">
+                    <li><span>Home</span></li>
+                    <li><span>About Me</span></li>
+                    <li><span>Contact</span></li>
+                </ul>
+                
+                <button>Sign Up</button>
+            </nav>
+        </header>
+
+        <main class="grid-parent">
+            <div class="left-p">
+                <div id="wordDiv">
+                    <div class="wordContainer">
+                        <h1>Hello</h1>
+                        <p>Making use of the rule of thirds, we created a hierarchy on the left side of the page. 
+                        The header, “There’s a better way to grow,” is the focal point, and it leads you to the 
+                        next most important piece of content which is the call-to-action, “Get HubSpot Free.”</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="right-p">
+                <div id="footballDiv">
+                    <img id="footballGateImg" src="../resource/oie_1bOxdlDbnrx3.png">
+                    <img id="footballImg" src="../resource/oie_0e9KJgTSABQD.png">
+                </div>  
+            </div>          
+        </main>
+        
     </body>
 </html>
