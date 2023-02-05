@@ -10,6 +10,7 @@ let rollList = document.getElementsByClassName("icon-circle");
 setTimeout( () => {
     for (let i = 0; i < rollList.length; i++) {
         rollList[i].addEventListener("mouseover", () => {
+            rollDescList[i].style.visibility = "visible";
             rollDescList[i].style.opacity = "1";
         });
     }
@@ -19,4 +20,4 @@ setTimeout( () => {
             rollDescList[i].style.opacity = "0";
         });
     }
-}, 2000)
+}, 1500)
