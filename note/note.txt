@@ -1,0 +1,6 @@
+1. football kick animation
+
+<div id="footballDiv">
+    <img id="footballGateImg" src="../resource/oie_1bOxdlDbnrx3.png">
+    <img id="footballImg" src="../resource/oie_0e9KJgTSABQD.png">
+</div>  
