@@ -1,0 +1,43 @@
+header {
+    position: fixed;
+    width: 100%;
+}
+
+nav {
+    width: 100%;
+    padding: 25px 10px 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#navList {
+    width: 600px;
+    text-align: center;
+    list-style-type: none;
+}
+
+#navList li {
+    display: inline-block;
+    padding: 10px;
+    width: 150px;
+    transition: all 0.4s;
+    margin: 0;
+    font-weight: 500;
+}
+
+#navList li:hover{
+    transform: scale(1.1, 1.1);
+    border: 1px solid black;
+}
+
+.slideUpEffect {
+    animation: slideUp 1s forwards;
+}
+
+@keyframes slideUp {
+    100% {
+        transform: translate(0px, -100px);
+    }
+}

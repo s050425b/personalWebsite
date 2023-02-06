@@ -1,0 +1,21 @@
+.root {
+    --slideRight-distence : -1100px;
+}
+
+.slideRight-scroll {
+    animation: slideRight 1s;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translate(var(--slideRight-distence), 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+    
+}
