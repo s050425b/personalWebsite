@@ -35,6 +35,10 @@ function displayExp(obj) {
         skillsetstr += "<li>" + skill + "</li>";
     }
     document.getElementsByClassName("exp-work-skillset")[0].innerHTML = skillsetstr;
+
+    setTimeout(() => {
+        document.getElementsByClassName("exp-content")[0].classList.add("exp-content-active");
+    }, 200);
 }
 //--------------------------------------------------
 
@@ -42,6 +46,7 @@ displayExp(expList[0]);
 
 let btnList = document.getElementsByClassName("exp-btn");
 btnList[0].classList.add("exp-btn-active");
+
 for (let element of btnList) {
     element.addEventListener("mouseover", () => {
         element.classList.add("exp-btn-hover");
@@ -52,8 +57,17 @@ for (let element of btnList) {
     });
 
     element.addEventListener("click", () => {
+        document.getElementsByClassName("exp-content")[0].classList.remove("exp-content-active");
+        
         for(let x of btnList) {
             x.classList.remove("exp-btn-active");
+        }
+
+        for (let count = 0; count< btnList.length;  count++){
+            if (element === btnList[count]) {
+                console.log(count);
+                displayExp(expList[count]);
+            }
         }
         element.classList.add("exp-btn-active");
     });

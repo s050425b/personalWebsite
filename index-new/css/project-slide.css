@@ -1,0 +1,16 @@
+.project-box-parent {
+    display: inline-flex;
+    width: 100%;
+    overflow: scroll;
+    transition: all 1s;
+}
+
+.project-box {
+    display: inline-block;
+    width: 20%;
+    height: 200px;
+    flex-shrink: 0;
+    background-color: blue;
+    margin: 10px 30px;
+    color: white;
+}
