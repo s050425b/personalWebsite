@@ -8,9 +8,10 @@
 .project-box {
     display: inline-block;
     width: 20%;
-    height: 200px;
+    height: 600px;
     flex-shrink: 0;
     background-color: blue;
     margin: 10px 30px;
     color: white;
+    border-radius: 5%;
 }
