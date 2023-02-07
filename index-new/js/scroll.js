@@ -15,7 +15,7 @@ window.addEventListener('scroll', () => {
     // console.log("offsetHeight  "+ document.body.offsetHeight);
     // console.log("innerHeight  "+ window.innerHeight);
 
-    if( scrollIndex > 163){
+    if( scrollIndex > document.getElementsByClassName("skill-flex-parent")[0].getBoundingClientRect().top){
         setSkillDelay();
     }
 

@@ -1,14 +1,24 @@
+:root {
+    --hello: 0px;
+    --slide-go-x-axis: 0px;
+}
+
 .project-box-parent {
+    position: relative;
+    left: -20%;
     display: inline-flex;
     width: 100%;
     overflow: scroll;
-    transition: all 1s;
+}
+
+.project-slide-animation {
+    transform: translate(var(--slide-go-x-axis), 0px);
 }
 
 .project-box {
     display: inline-block;
-    width: 20%;
-    height: 600px;
+    width: 250px;
+    height: 450px;
     flex-shrink: 0;
     background-color: blue;
     margin: 10px 30px;

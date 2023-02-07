@@ -1,5 +1,6 @@
-.root {
+:root {
     --slideRight-distence : -1100px;
+    --hello: 0px;
 }
 
 .slideRight-scroll {
