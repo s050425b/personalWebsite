@@ -1,14 +1,15 @@
 :root {
-    --hello: 0px;
     --slide-go-x-axis: 0px;
 }
 
 .project-box-parent {
     position: relative;
-    left: -20%;
+    box-sizing: border-box;
     display: inline-flex;
-    width: 100%;
+    width: 100vw;
     overflow: scroll;
+    padding: 30px;
+    cursor: grab;
 }
 
 .project-slide-animation {
@@ -16,12 +17,13 @@
 }
 
 .project-box {
+    user-select: none;
     display: inline-block;
-    width: 250px;
-    height: 450px;
+    width: 350px;
+    height: 500px;
     flex-shrink: 0;
     background-color: blue;
-    margin: 10px 30px;
+    margin: 0px 30px;
     color: white;
     border-radius: 5%;
 }

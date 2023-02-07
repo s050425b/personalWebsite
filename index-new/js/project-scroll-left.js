@@ -1,19 +1,62 @@
-// let currentX = 0;
+let pageX;
+let scrollLeft;
+let isClicked;
+let slider = document.getElementsByClassName("project-box-parent")[0];
+let walk;
+let lastWalk; 
+let timerOn = false;
 
-document.getElementsByClassName("scroll-left")[0].addEventListener("click", () => {
-    setXValue(200);
+slider.addEventListener("mousedown", (e) => {
+    //console.log("e: " + e.pageX);
+    //console.log("scrollLeft:" + document.getElementsByClassName("project-box-parent")[0].scrollLeft);
+    walk = 0;
+    pageX = e.pageX - slider.offsetLeft;
+    isClicked = true;
+    scrollLeft = slider.scrollLeft;
 });
 
-document.getElementsByClassName("scroll-right")[0].addEventListener("click", () => {
-    setXValue(-200);
+
+slider.addEventListener("mousemove", (e) => {
+    if (isClicked){
+        walk = (pageX - slider.offsetLeft - e.pageX) * 1.25;
+        slider.scrollLeft = scrollLeft + walk;
+
+        let record = () => {
+            if (timerOn){
+                setTimeout(() => {
+                    lastWalk = (pageX - slider.offsetLeft - e.pageX) * 1.25;
+                    console.log(lastWalk);
+                    record();
+                }, 500);
+            }
+        }
+          
+        if (!timerOn){
+            timerOn = true;
+            record();
+        }
+    }
 });
 
-function setXValue(value){
-    let currentX = getComputedStyle(document.documentElement).getPropertyValue("--slide-go-x-axis");
-    currentX = parseInt(currentX.split("px")[0]); 
-    console.log(currentX);
-    currentX += value;
-    document.documentElement.style.setProperty("--slide-go-x-axis",  currentX + "px");
-}
+slider.addEventListener("mouseup", () => {
+    isClicked = false;
+    timerOn = false;
 
+    let motion = lastWalk * 0.05;
+    
+    let timer = 600;
+    let step = () => {
+        if (timer > 0) {
+            setTimeout( () => {
+                slider.scrollLeft += motion;
+                motion = motion / 1.05;
+                timer -=10;
+                step();
+            }, 10);
+        }
+    }
+    step();
+        
+    
+});
 
