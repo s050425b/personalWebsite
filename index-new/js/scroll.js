@@ -42,7 +42,7 @@ window.addEventListener('scroll', () => {
 
     //section showup effect
     for (let element of sectionList) {
-        if (windowHeight > element.getBoundingClientRect().top + 500 && element.getBoundingClientRect().bottom > 500) {
+        if (windowHeight > element.getBoundingClientRect().top + 600 && element.getBoundingClientRect().bottom > 600) {
             let showUpList = element.getElementsByClassName("addScrollShowup");
             for (let elementComp of showUpList) {
                 elementComp.classList.add("doShowUp");

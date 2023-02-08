@@ -1,11 +1,6 @@
-:root {
-    --slide-go-x-axis: 0px;
-}
-
 .project-box-wrapper {
     box-sizing: border-box;
     width: 100%;
-    /* padding: 0px 100px; */
     overflow: hidden;
 }
 
@@ -20,18 +15,12 @@
     cursor: grab;
 }
 
-.project-slide-animation {
-    transform: translate(var(--slide-go-x-axis), 0px);
-}
-
 .project-box {
     user-select: none;
-    display: inline-block;
     width: 300px;
     height: 400px;
     flex-shrink: 0;
     background-color: blueviolet;
     margin: 0px 30px;
-    color: white;
     border-radius: 5%;
 }
