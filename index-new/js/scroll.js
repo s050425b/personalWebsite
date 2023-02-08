@@ -1,9 +1,14 @@
 document.documentElement.style.setProperty("--slideRight-distence", "-" + screen.width + "px");
 
+let windowHeight = window.innerHeight;
+
 window.addEventListener('scroll', () => {
     document.body.style.setProperty('--scroll', window.pageYOffset);
+
     //console.log(document.body.style.getPropertyValue("--scroll"));
     let scrollIndex = document.body.style.getPropertyValue("--scroll");
+
+    //header scroll effect
     if (scrollIndex > 50 ) {
         document.getElementsByTagName("header")[0].classList.add("slideUpEffect");
     }
@@ -12,7 +17,8 @@ window.addEventListener('scroll', () => {
         document.getElementsByTagName("header")[0].classList.remove("slideUpEffect");
     }
 
-    if( window.innerHeight > document.getElementsByClassName("skill-flex-parent")[0].getBoundingClientRect().top + 50){
+    //skill section scroll effect
+    if( windowHeight > document.getElementsByClassName("skill-flex-parent")[0].getBoundingClientRect().top + 50){
         setSkillDelay();
     }
 
@@ -29,3 +35,19 @@ window.addEventListener('scroll', () => {
         domList[i].style.animationDuration = `${domList.length - i + 1}s`;
     }
   }
+
+  let sidebarChildren = document.getElementsByClassName("sidebar-child");
+  let sectionList = document.getElementsByClassName("scrollCenter");
+
+  for (let counter = 0; counter < sidebarChildren.length; counter++) {
+    sidebarChildren[counter].addEventListener("click", () => {
+        console.log(sectionList[counter].offsetTop);
+        window.scrollTo({
+            top: sectionList[counter].offsetTop,
+            behavior: 'smooth'
+        });
+    });
+  }
+
+
+
