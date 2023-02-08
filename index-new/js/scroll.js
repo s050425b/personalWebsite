@@ -38,16 +38,20 @@ window.addEventListener('scroll', () => {
 
   let sidebarChildren = document.getElementsByClassName("sidebar-child");
   let sectionList = document.getElementsByClassName("scrollCenter");
+  let sidebarContent = document.getElementsByClassName("sidebar-content");
 
   for (let counter = 0; counter < sidebarChildren.length; counter++) {
-    sidebarChildren[counter].addEventListener("click", () => {
-        console.log(sectionList[counter].offsetTop);
+    sidebarChildren[counter].addEventListener("click", (e) => {
         window.scrollTo({
             top: sectionList[counter].offsetTop,
             behavior: 'smooth'
         });
+
+        for (let element of sidebarContent) {
+            element.classList.remove("sidebar-active");
+        }
+        sidebarContent[counter].classList.add("sidebar-active");
     });
   }
-
 
 

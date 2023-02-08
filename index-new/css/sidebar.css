@@ -32,3 +32,11 @@
     background-color: transparent;
     border: 2px black solid;
 }
+
+.sidebar-active {
+    border-radius: 5%;
+    transform: scale(1.2, 1.2);
+    background-color: black;
+    border: 2px black solid;
+    transition: border-radius 1s, transform 1s, background-color 1s;
+}
