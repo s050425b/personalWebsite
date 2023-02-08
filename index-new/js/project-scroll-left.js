@@ -3,34 +3,40 @@ let scrollLeft;
 let isClicked;
 let slider = document.getElementsByClassName("project-box-parent")[0];
 let walk;
-let lastWalk; 
+let speed; 
 let timerOn = false;
+let lastX;
+let xNow;
 
 slider.addEventListener("mousedown", (e) => {
     //console.log("e: " + e.pageX);
     //console.log("scrollLeft:" + document.getElementsByClassName("project-box-parent")[0].scrollLeft);
     walk = 0;
-    pageX = e.pageX - slider.offsetLeft;
+    pageX = e.pageX;
     isClicked = true;
     scrollLeft = slider.scrollLeft;
+    
+    lastX = pageX;
 });
 
-
+let eventPass;
 slider.addEventListener("mousemove", (e) => {
     if (isClicked){
-        walk = (pageX - slider.offsetLeft - e.pageX) * 1.25;
+        walk = (pageX - e.pageX) * 1.15;
         slider.scrollLeft = scrollLeft + walk;
 
         let record = () => {
             if (timerOn){
                 setTimeout(() => {
-                    lastWalk = (pageX - slider.offsetLeft - e.pageX) * 1.25;
-                    console.log(lastWalk);
+                    xNow = eventPass.pageX;
+                    speed = lastX - xNow;
+                    lastX = xNow;
                     record();
-                }, 500);
+                }, 100);
             }
         }
-          
+         
+        eventPass = e;
         if (!timerOn){
             timerOn = true;
             record();
@@ -42,11 +48,10 @@ slider.addEventListener("mouseup", () => {
     isClicked = false;
     timerOn = false;
 
-    let motion = lastWalk * 0.05;
-    
+    let motion = speed * 0.1;
     let timer = 600;
     let step = () => {
-        if (timer > 0) {
+        if (timer > 0 && !isClicked) {
             setTimeout( () => {
                 slider.scrollLeft += motion;
                 motion = motion / 1.05;
@@ -60,3 +65,8 @@ slider.addEventListener("mouseup", () => {
     
 });
 
+slider.addEventListener("mouseout", () => {
+    isClicked = false;
+    timerOn = false;
+    speed = 0;
+});

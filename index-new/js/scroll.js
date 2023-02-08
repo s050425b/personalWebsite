@@ -2,7 +2,7 @@ document.documentElement.style.setProperty("--slideRight-distence", "-" + screen
 
 window.addEventListener('scroll', () => {
     document.body.style.setProperty('--scroll', window.pageYOffset);
-    console.log(document.body.style.getPropertyValue("--scroll"));
+    //console.log(document.body.style.getPropertyValue("--scroll"));
     let scrollIndex = document.body.style.getPropertyValue("--scroll");
     if (scrollIndex > 50 ) {
         document.getElementsByTagName("header")[0].classList.add("slideUpEffect");
@@ -11,11 +11,8 @@ window.addEventListener('scroll', () => {
     if (scrollIndex < 50 ) {
         document.getElementsByTagName("header")[0].classList.remove("slideUpEffect");
     }
-    // console.log("pageYOffset  "+ window.pageYOffset);
-    // console.log("offsetHeight  "+ document.body.offsetHeight);
-    // console.log("innerHeight  "+ window.innerHeight);
 
-    if( scrollIndex > document.getElementsByClassName("skill-flex-parent")[0].getBoundingClientRect().top){
+    if( window.innerHeight > document.getElementsByClassName("skill-flex-parent")[0].getBoundingClientRect().top + 50){
         setSkillDelay();
     }
 
