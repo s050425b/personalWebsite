@@ -6,6 +6,7 @@
     position: fixed;
     bottom: 70px;
     right: 70px;
+    z-index: 9;
 }
 
 .sidebar-child {

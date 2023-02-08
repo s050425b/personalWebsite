@@ -202,3 +202,22 @@ h3 {
 .line4 {
     font-size: 1rem;
 }
+
+.addScrollShowup {
+    opacity: 0;
+}
+
+.doShowUp {
+    animation: scrollShowup 1s ease forwards;
+}
+
+@keyframes scrollShowup {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

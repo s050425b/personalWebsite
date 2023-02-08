@@ -1,6 +1,24 @@
 document.documentElement.style.setProperty("--slideRight-distence", "-" + screen.width + "px");
 
 let windowHeight = window.innerHeight;
+let sidebarChildren = document.getElementsByClassName("sidebar-child");
+let sectionList = document.getElementsByClassName("scrollCenter");
+let sidebarContent = document.getElementsByClassName("sidebar-content");
+
+for (let counter = 0; counter < sidebarChildren.length; counter++) {
+    sidebarChildren[counter].addEventListener("click", (e) => {
+        window.scrollTo({
+            top: sectionList[counter].offsetTop,
+            behavior: 'smooth'
+        });
+
+        for (let element of sidebarContent) {
+            element.classList.remove("sidebar-active");
+        }
+        sidebarContent[counter].classList.add("sidebar-active");
+    });
+  }
+
 
 window.addEventListener('scroll', () => {
     document.body.style.setProperty('--scroll', window.pageYOffset);
@@ -22,6 +40,17 @@ window.addEventListener('scroll', () => {
         setSkillDelay();
     }
 
+    //section showup effect
+    for (let element of sectionList) {
+        if (windowHeight > element.getBoundingClientRect().top + 500 && element.getBoundingClientRect().bottom > 500) {
+            let showUpList = element.getElementsByClassName("addScrollShowup");
+            for (let elementComp of showUpList) {
+                elementComp.classList.add("doShowUp");
+            }
+        }
+    }
+
+    console.log(sectionList[1].getBoundingClientRect().bottom);
   }, false);
 
 
@@ -36,22 +65,6 @@ window.addEventListener('scroll', () => {
     }
   }
 
-  let sidebarChildren = document.getElementsByClassName("sidebar-child");
-  let sectionList = document.getElementsByClassName("scrollCenter");
-  let sidebarContent = document.getElementsByClassName("sidebar-content");
 
-  for (let counter = 0; counter < sidebarChildren.length; counter++) {
-    sidebarChildren[counter].addEventListener("click", (e) => {
-        window.scrollTo({
-            top: sectionList[counter].offsetTop,
-            behavior: 'smooth'
-        });
-
-        for (let element of sidebarContent) {
-            element.classList.remove("sidebar-active");
-        }
-        sidebarContent[counter].classList.add("sidebar-active");
-    });
-  }
 
 
