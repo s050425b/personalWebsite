@@ -4,6 +4,7 @@ let windowHeight = window.innerHeight;
 let sidebarChildren = document.getElementsByClassName("sidebar-child");
 let sectionList = document.getElementsByClassName("scrollCenter");
 let sidebarContent = document.getElementsByClassName("sidebar-content");
+let whenToShow = windowHeight * 0.5;
 
 for (let counter = 0; counter < sidebarChildren.length; counter++) {
     sidebarChildren[counter].addEventListener("click", (e) => {
@@ -36,21 +37,20 @@ window.addEventListener('scroll', () => {
     }
 
     //skill section scroll effect
-    if( windowHeight > document.getElementsByClassName("skill-flex-parent")[0].getBoundingClientRect().top + 50){
+    if( windowHeight > document.getElementsByClassName("skill-flex-parent")[0].getBoundingClientRect().top + whenToShow && 
+    document.getElementsByClassName("skill-flex-parent")[0].getBoundingClientRect().bottom > whenToShow){
         setSkillDelay();
     }
 
     //section showup effect
     for (let element of sectionList) {
-        if (windowHeight > element.getBoundingClientRect().top + 600 && element.getBoundingClientRect().bottom > 600) {
+        if (windowHeight > element.getBoundingClientRect().top + whenToShow && element.getBoundingClientRect().bottom > whenToShow) {
             let showUpList = element.getElementsByClassName("addScrollShowup");
             for (let elementComp of showUpList) {
                 elementComp.classList.add("doShowUp");
             }
         }
     }
-
-    console.log(sectionList[1].getBoundingClientRect().bottom);
   }, false);
 
 

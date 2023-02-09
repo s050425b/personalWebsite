@@ -7,7 +7,7 @@
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-main::-webkit-scrollbar {
+body::-webkit-scrollbar {
     display: none;
 }
 
