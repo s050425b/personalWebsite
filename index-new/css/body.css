@@ -69,10 +69,12 @@ main {
 }
 
 .section-content {
+    grid-area: 2 / 1 / 2 / 1;
     align-self: start;
 }
 
 .h2_title {
+    grid-area: 1 / 1 / 2 / 2;
     box-sizing: border-box;
     width: 100%;
     padding: 0px 300px;
