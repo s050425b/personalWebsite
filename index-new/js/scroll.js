@@ -18,13 +18,12 @@ for (let counter = 0; counter < sidebarChildren.length; counter++) {
         }
         sidebarContent[counter].classList.add("sidebar-active");
     });
-  }
+}
 
-
-window.addEventListener('scroll', () => {
+const headerCallback = () => {
     document.body.style.setProperty('--scroll', window.pageYOffset);
 
-    //console.log(document.body.style.getPropertyValue("--scroll"));
+//     //console.log(document.body.style.getPropertyValue("--scroll"));
     let scrollIndex = document.body.style.getPropertyValue("--scroll");
 
     //header scroll effect
@@ -35,23 +34,46 @@ window.addEventListener('scroll', () => {
     if (scrollIndex < 50 ) {
         document.getElementsByTagName("header")[0].classList.remove("slideUpEffect");
     }
+  };
 
-    //skill section scroll effect
-    if( windowHeight > document.getElementsByClassName("skill-flex-parent")[0].getBoundingClientRect().top + whenToShow && 
-    document.getElementsByClassName("skill-flex-parent")[0].getBoundingClientRect().bottom > whenToShow){
-        setSkillDelay();
-    }
+//window.addEventListener('scroll', headerCallback);
 
-    //section showup effect
-    for (let element of sectionList) {
-        if (windowHeight > element.getBoundingClientRect().top + whenToShow && element.getBoundingClientRect().bottom > whenToShow) {
-            let showUpList = element.getElementsByClassName("addScrollShowup");
+const sectionCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            let showUpList = entry.target.getElementsByClassName("addScrollShowup");
             for (let elementComp of showUpList) {
                 elementComp.classList.add("doShowUp");
             }
+        } else {
+            let showUpList = entry.target.getElementsByClassName("addScrollShowup");
+            for (let elementComp of showUpList) {
+                elementComp.classList.remove("doShowUp");
+            }
         }
-    }
-  }, false);
+    });
+}
+
+const skillCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            setSkillDelay();
+        }
+    });
+}
+
+const options = {
+    rootMargin : "-40%"
+}
+
+const sectionObserver = new IntersectionObserver(sectionCallback, options);
+for (let element of sectionList) {
+    sectionObserver.observe(element);
+}
+
+const skillObserver = new IntersectionObserver(skillCallback, options);
+skillObserver.observe(sectionList[1]);
+
 
 
   function setSkillDelay() {
@@ -68,3 +90,26 @@ window.addEventListener('scroll', () => {
 
 
 
+
+
+
+let scrollableElement = document.body;
+
+scrollableElement.addEventListener('wheel', checkScrollDirection);
+
+function checkScrollDirection(event) {
+  if (checkScrollDirectionIsUp(event)) {
+    document.getElementsByTagName("header")[0].classList.remove("slideUpEffect");
+    document.getElementsByTagName("header")[0].classList.add("slideDownEffect");
+  } else {
+    document.getElementsByTagName("header")[0].classList.add("slideUpEffect");
+    document.getElementsByTagName("header")[0].classList.remove("slideDownEffect");
+  }
+}
+
+function checkScrollDirectionIsUp(event) {
+  if (event.wheelDelta) {
+    return event.wheelDelta > 0;
+  }
+  return event.deltaY < 0;
+}

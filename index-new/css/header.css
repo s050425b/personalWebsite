@@ -1,6 +1,8 @@
 header {
+    background-color: aliceblue;
     position: fixed;
     width: 100%;
+    z-index: 11;
 }
 
 nav {
@@ -36,8 +38,18 @@ nav {
     animation: slideUp 1s forwards;
 }
 
+.slideDownEffect {
+    animation: slideDown 1s forwards;
+}
+
 @keyframes slideUp {
     100% {
+        transform: translate(0px, -100px);
+    }
+}
+
+@keyframes slideDown {
+    0% {
         transform: translate(0px, -100px);
     }
 }

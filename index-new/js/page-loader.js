@@ -12,7 +12,8 @@ window.addEventListener("load", function(event) {
     
     document.querySelector("body").style.display = "block";
     newDiv.style.opacity = 0;
+    newDiv.style.zIndex = -1;
     // newDiv.style.display = "none";
-  }, 2000)
+  }, 1500)
   
 });
