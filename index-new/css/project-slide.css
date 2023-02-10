@@ -17,10 +17,17 @@
 
 .project-box {
     user-select: none;
-    width: 300px;
+    width: 25%;
     height: 400px;
     flex-shrink: 0;
     background-color: blueviolet;
     margin: 0px 30px;
     border-radius: 5%;
+}
+
+.center-behind-box {
+    width: 25%;
+    height: 400px;
+    margin: 30px auto;
+    background-color: aqua;
 }

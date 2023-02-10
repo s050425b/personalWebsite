@@ -69,6 +69,7 @@ main {
 
 .section-content {
     grid-area: 2 / 1 / 5 / 7;
+    align-self: start;
 }
 
 .h2_title {
