@@ -19,28 +19,25 @@ slider.addEventListener("mousedown", (e) => {
     lastX = pageX;
 });
 
-let eventPass;
+
+
+let timestamp = 0;
+let mY = 0;
+
 slider.addEventListener("mousemove", (e) => {
     if (isClicked){
         walk = (pageX - e.pageX) * 1.15;
         slider.scrollLeft = scrollLeft + walk;
 
-        let record = () => {
-            if (timerOn){
-                setTimeout(() => {
-                    xNow = eventPass.pageX;
-                    speed = lastX - xNow;
-                    lastX = xNow;
-                    record();
-                }, 100);
-            }
-        }
-         
-        eventPass = e;
-        if (!timerOn){
-            timerOn = true;
-            record();
-        }
+        let now = Date.now();
+        currentmY = e.screenY;
+
+        let dt = now - timestamp;
+        let distance = currentmY - mY;
+        speed = distance / dt * 1000;
+
+        mY = currentmY;
+        timestamp = now;
     }
 });
 
@@ -69,4 +66,21 @@ slider.addEventListener("mouseout", () => {
     isClicked = false;
     timerOn = false;
     speed = 0;
+});
+
+
+
+const boxList = document.getElementsByClassName("project-box");
+const centerBox = document.getElementsByClassName("center-behind-box")[0];
+
+slider.addEventListener("scroll", () => {
+    for (element of boxList) {
+        if ( (element.getBoundingClientRect().left > centerBox.getBoundingClientRect().left && 
+        element.getBoundingClientRect().left < centerBox.getBoundingClientRect().right) ||
+        (element.getBoundingClientRect().right < centerBox.getBoundingClientRect().right && 
+        element.getBoundingClientRect().right > centerBox.getBoundingClientRect().left)
+        ) {
+            console.log(element);
+        }
+    }
 });
